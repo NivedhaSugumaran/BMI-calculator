@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<link rel="stylesheet" href="index1.css">
+  <head>
+    <meta charset="utf-8">
+
+	<!-- Javascript SDKs-->
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<script src="js/amazon-cognito-auth.min.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+	<script src="js/amazon-cognito-identity.min.js"></script>   
+	<script src="js/config.js"></script>
+  <script src="js/jwt-decode.js"></script>
+
+  </head>
+  <body>
+   <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+      <div>SIGN<span> IN</span></div>
+    </div>
+    <br>
+    <div class="login">
+      <input type="text" id="inputUsername" placeholder="Email" name="username" required autofocus><br>
+        <input type="password" id="inputPassword" placeholder="Password" name="password" required ><br>
+        
+        
+      <input type="button" onclick="signInButton()" value="Sign In">
+      
+    
+    <br><br>
+    <div > <a style="color: white;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;text-decoration: none;
+  font-weight: 50;" href="index.html">Dont Have an Account? Register Here</a></div></div>
+    
+
+
+<script>
+
+  function signInButton() {
+    var mail=document.getElementById("inputUsername").value;
+    
+	var authenticationData = {
+        Username : document.getElementById("inputUsername").value,
+        Password : document.getElementById("inputPassword").value,
+    };
+	
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+    
+	var poolData = {
+        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+        ClientId : _config.cognito.clientId, // Your client id here
+    };
+	
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+	
+    var userData = {
+        Username : document.getElementById("inputUsername").value,
+        Pool : userPool,
+    };
+	
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    
+	cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+			var accessToken = result.getAccessToken().getJwtToken();
+      console.log(accessToken); 
+      var decoded = jwt_decode(accessToken);
+      var id=decoded['sub'];
+        var params ={
+        "userid":id,
+        "email":mail
+        };
+      
+      var xmlhttp = new XMLHttpRequest();
+       xmlhttp.open("POST","https://pddifw22vb.execute-api.ap-south-1.amazonaws.com/Dev");
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.send(JSON.stringify(params));
+    xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState === 4) {
+      var response = JSON.parse(xmlhttp.responseText);
+      if (xmlhttp.status === 200 ) {
+        console.log('successful');
+        window.location.href="profile.html";
+        //document.getElementById("titleheader").innerHTML = "Check your email for a verification link";
+        } else {
+          console.log('failed');
+      }
+    }
+  }
+      
+			
+        },
+
+        onFailure: function(err) {
+            alert(err.message || JSON.stringify(err));
+        },
+    });
+
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

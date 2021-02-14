@@ -1,0 +1,323 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="js/amazon-cognito-identity.min.js"></script>  
+   <script src="js/config.js"></script>
+ <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #wrapper td { padding:.75rem; }
+   #calcform {
+      padding:15px;
+      background:#CCFFCC;
+      
+      border:1px solid #eee;
+      border-radius:7px;
+      max-width:500px;
+   }
+   #cmdiv, #kgdiv { display:none; }
+   .btn i { vertical-align:middle; }
+   
+</style>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li label{
+
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+}
+
+li a:hover {
+  background-color: #111;
+}
+.button{
+  background-color: #70c28e; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+</style>
+</head>
+<body>
+       
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+   "use strict"
+   var isMetric=false;
+   window.onload = function() {
+   };
+   function OnReset()
+   {
+      $("#calcform .btn-group label").removeClass("active");
+      $("#calcform .btn-group label:first-child").addClass("active");
+   }
+   function OnUnitMetric() {
+      document.getElementById("ftdiv").style.display = "none";
+      document.getElementById("lbdiv").style.display = "none";
+      document.getElementById("cmdiv").style.display = "flex";
+      document.getElementById("kgdiv").style.display = "flex";
+      isMetric = true;
+   }
+   function OnUnitUS() {
+      document.getElementById("ftdiv").style.display = "flex";
+      document.getElementById("lbdiv").style.display = "flex";
+      document.getElementById("cmdiv").style.display = "none";
+      document.getElementById("kgdiv").style.display = "none";
+      isMetric = false;
+   }
+   function OnCalc() {
+    
+       
+    var final_weight;
+    var final_height;
+    var final_bmi;
+      if( isMetric ) {
+         var cm=document.getElementById("cm").value;
+         var kg=document.getElementById("kg").value;
+         if( cm=="" ) cm="0";
+         if( kg=="" ) kg="0";
+         cm=parseFloat(cm);
+         kg=parseFloat(kg);
+         var m=cm/100.0;
+         var bmi=kg/(m*m);
+         final_weight=kg;
+         final_height=cm;
+         document.getElementById("bmi").value=bmi.toFixed(1);
+         final_bmi=bmi.toFixed(1);
+      }
+      else {
+         var ft=document.getElementById("ft").value;
+         var inch=document.getElementById("in").value;
+         var lbs=document.getElementById("lb").value;
+         if( ft=="" ) ft="0";
+         if( inch=="" ) inch="0";
+         if( lbs=="" ) lbs="0";
+         ft=parseFloat(ft);
+         inch=parseFloat(inch);
+         lbs=parseFloat(lbs);
+         var inch1=inch+12.0*ft;
+         var bmi=703*lbs/(inch1*inch1);
+         final_height=parseInt((ft*30.48)+(inch*2.54));
+         final_weight=parseInt(lbs*0.453);
+         document.getElementById("bmi").value=bmi.toFixed(1);
+         final_bmi=bmi.toFixed(1);
+
+      }
+
+      var risk="",cat="";
+      if( bmi<18.5 ) { cat="Underweight"; risk="Malnutrition risk"; }
+      else if( bmi<25 ) { cat="Normal weight"; risk="Low risk"; }
+      else if( bmi<30 ) { cat="Overweight"; risk="Enchanced risk"; }
+      else if( bmi<35 ) { cat="Moderately obese"; risk="Medium risk"; }
+      else if( bmi<40 ) { cat="Severely obese"; risk="High risk"; }
+      else if( bmi>=40 ) { cat="Very severely obese"; risk="Very high risk"; }
+      document.getElementById("category").value = cat;
+      document.getElementById("risk").value = risk;
+      var final_risk=risk;
+      var final_category=cat;
+      //var Email=document.getElementById("email_value").value;
+   console.log(cognitoUser.getUsername());
+   var x=cognitoUser.getUsername();
+     console.log(x+"\n"+final_weight+"\n"+final_height+"\n"+final_bmi+"\n"+final_risk+"\n"+final_category);
+
+     var params ={
+        "userid":x,
+        "height":final_height,
+        "weight":final_weight,
+        "bmi":final_bmi,
+        "category":final_category,
+        "risk":final_risk
+        };
+      
+      var xmlhttp = new XMLHttpRequest();
+       xmlhttp.open("POST","https://ied4x6mnge.execute-api.ap-south-1.amazonaws.com/dev");
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.send(JSON.stringify(params));
+    xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState === 4) {
+      var response = JSON.parse(xmlhttp.responseText);
+      if (xmlhttp.status === 200 ) {
+        console.log('successful');
+        
+        } else {
+          console.log('failed');
+      }
+    }
+  }
+
+
+   }
+
+
+</script>
+<script>
+  var Email;
+   var data = { 
+      UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    var cognitoUser = userPool.getCurrentUser();
+   console.log(cognitoUser);
+   window.onload = function(){
+    if (cognitoUser != null) {
+        cognitoUser.getSession(function(err, session) {
+            if (err) {
+                alert(err);
+                return;
+            }
+            console.log('session validity: ' + session.isValid());
+         //Set the profile info
+         cognitoUser.getUserAttributes(function(err, result) {
+            if (err) {
+               console.log(err);
+               return;
+            }
+            console.log(result);
+            document.getElementById("email_value").innerHTML = result[2].getValue(); 
+            
+            
+         });         
+        });
+    }
+}
+
+   function signOut(){
+    console.log(cognitoUser);
+       if (cognitoUser !== null) {
+          cognitoUser.signOut(); 
+          window.location.href="login.html";  
+        }
+   }
+    </script>
+<ul>
+  <li style="font-size: 20px;"><a class="active" href="profile.html"><b>FIT BIT</b></a></li>
+  
+  <li style="float: right; font-size: 15px;"><button class="button" onclick="signOut()">Sign out</button></li>
+  <li style="float:right;font-size: 20px;color: white;"><label id="email_value"></label></li>
+  
+ 
+</ul>
+
+<div class="row">
+ 
+<div class="container">
+ <div id="lcol">
+  <center>
+  <div id="doc">
+   
+    <h1>
+BMI Calculator</h1>
+<br>
+<form id="calcform" autocomplete="off">
+      <div class="form-group grid">
+        
+         <div class="btn-group btn-group-toggle row ml-0" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+               <input type="radio" name="ut" id="ut-us" onchange="OnUnitUS()" value="u" checked>US/UK Units
+            </label>
+            <label class="btn btn-secondary">
+               <input type="radio" name="ut" id="ut-metric" onchange="OnUnitMetric()" value="m">Metric units
+            </label>
+         </div>
+</div>
+<div class="form-group">
+         <label>Height</label>
+         <div class="input-group" id="ftdiv">
+            <input type="number"min="0" class="form-control form-control-lg" id="ft" placeholder="feet">
+            <div class="input-group-append mr-2">
+               <span class="input-group-text">ft</span>
+            </div>
+            <input type="number" min="0" class="form-control form-control-lg" id="in" placeholder="inches">
+            <div class="input-group-append">
+               <span class="input-group-text">in</span>
+            </div>
+</div>
+<div class="input-group" id="cmdiv">
+            <input type="number" min="0" class="form-control form-control-lg" id="cm" placeholder="centimeters">
+            <div class="input-group-append">
+               <span class="input-group-text">cm</span>
+            </div>
+</div>
+</div>
+<div class="form-group">
+         <label>Weight</label>
+         <div class="input-group" id="lbdiv">
+            <input type="number" min="0" class="form-control form-control-lg" id="lb" placeholder="pounds">
+            <div class="input-group-append">
+               <span class="input-group-text">lb</span>
+            </div>
+</div>
+<div class="input-group" id="kgdiv">
+            <input type="number" min="0" class="form-control form-control-lg" id="kg" placeholder="kilograms">
+            <div class="input-group-append">
+               <span class="input-group-text">kg</span>
+            </div>
+</div>
+</div>
+<div class="form-group">
+         <button type="button" title="Calculate" onclick="OnCalc()" class="btn btn-success"><i class="material-icons">settings</i> Calculate</button>
+         <button type="reset" title="Reset" onclick="OnReset()" class="btn btn-warning"><i class="material-icons">clear</i> Reset</button>
+      </div>
+<div class="form-group">
+         <label for="bmi">BMI</label>
+         <div class="input-group">
+         <input type="number" min="0" class="form-control form-control-lg" id="bmi" readonly>
+         <div class="input-group-append">
+            <span class="input-group-text">kg/m<sup>2</sup></span>
+         </div>
+</div>
+</div>
+<div class="form-group">
+         <label for="risk">BMI category</label>
+         <input type="text" class="form-control form-control-lg" id="category" readonly>
+      </div>
+<div class="form-group">
+         <label for="risk">Health risk</label>
+         <input type="text" class="form-control form-control-lg" id="risk" readonly>
+      </div>
+</form>
+</div>
+</center>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>
