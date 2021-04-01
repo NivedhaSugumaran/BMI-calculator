@@ -49,12 +49,8 @@
       "name": "repos123"
     }
   ],
-  "placementConstraints": [],
   "memory": "300",
   "taskRoleArn": "None",
-  "compatibilities": [
-    "EC2"
-  ],
   
   "family": "sami:3",
   "networkMode": "bridge",
