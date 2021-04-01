@@ -1,4 +1,4 @@
-{
+"{
     "family": "trialquiz",
     "taskRoleArn": "",
     "executionRoleArn": "",
@@ -163,4 +163,4 @@
     ],
     
  
-}
+}"
