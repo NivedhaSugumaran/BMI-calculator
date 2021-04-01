@@ -45,7 +45,7 @@
       "systemControls": null,
       "privileged": null,
       "name": "repos123"
-    }
+    },
   ],
   "memory": "300",
   "taskRoleArn": "None",
