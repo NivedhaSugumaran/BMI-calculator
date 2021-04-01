@@ -166,7 +166,7 @@
                     "iam": "ENABLED"
                 }
             },
-        }
+        },
    ],
     "placementConstraints": [
         {
