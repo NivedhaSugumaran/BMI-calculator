@@ -1,5 +1,5 @@
 {
-    "family": "quiztrial"
+    "family": "quiztrial",
     "networkMode": "bridge",
     "containerDefinitions" : [
     {
