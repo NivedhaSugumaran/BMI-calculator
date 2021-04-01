@@ -1,4 +1,4 @@
-{
+{  
     "family": "trialquiz",
     "taskRoleArn": "",
     "executionRoleArn": "",
@@ -167,14 +167,14 @@
                 }
             },
       
-   
+    ],
     "placementConstraints": [
         {
             "type": "memberOf",
             "expression": ""
         }
     ],
-    "requiresCompatibilities": ["EC2"],
+    "requiresCompatibilities": "EC2",
     "cpu": "",
     "memory": "",
     
