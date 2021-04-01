@@ -53,7 +53,5 @@
   "family": "sami:3",
   "networkMode": "bridge",
   "cpu": "128",
-  "inferenceAccelerators": null,
-  "proxyConfiguration": null,
   "volumes": []
 }
