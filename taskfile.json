@@ -50,7 +50,7 @@
   "memory": "300",
   "taskRoleArn": "None",
   
-  "family": "sami:3",
+  "family": "trialce",
   "networkMode": "bridge",
   "cpu": "128",
   "volumes": []
