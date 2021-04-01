@@ -12,9 +12,9 @@
                     "containerPort": 8081,
                     "hostPort": 80
                 } ],
-     }  ,
+     }  
         ],
-            "essential": true
+            "essential": "true"
         
     
     
