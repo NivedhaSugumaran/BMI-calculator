@@ -1,6 +1,4 @@
 {
-  "ipcMode": null,
-  "executionRoleArn": null,
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -55,7 +53,6 @@
   "family": "sami:3",
   "networkMode": "bridge",
   "cpu": "128",
-  "revision": 3,
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
   "volumes": []
