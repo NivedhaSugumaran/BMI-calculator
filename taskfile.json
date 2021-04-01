@@ -163,6 +163,5 @@
     ],
     "pidMode": "task",
     "ipcMode": "none",
- ],   
-    
+ ]
 }
