@@ -1,4 +1,4 @@
-{
+{ [
 	"family": "quiztrial",
 	"networkMode": "bridge",
 	"requiresCompatibilities": [
@@ -15,4 +15,4 @@
 			"hostPort": 80
 		},]
 	}]
-}
+]}
