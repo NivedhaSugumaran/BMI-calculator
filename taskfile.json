@@ -166,15 +166,7 @@
                     "iam": "ENABLED"
                 }
             },
-            "FSxWindowsFileServerVolumeConfiguration": {
-                "fileSystemId": "",
-                "rootDirectory": "",
-                "authorizationConfig": {
-                    "credentialsParameter": "",
-                    "domain": ""
-                }
-            }
-        }
+      
     ],
     "placementConstraints": [
         {
@@ -185,12 +177,7 @@
     "requiresCompatibilities": ["EC2"],
     "cpu": "",
     "memory": "",
-    "tags": [
-        {
-            "key": "",
-            "value": ""
-        }
-    ],
+    
     "pidMode": "task",
     "ipcMode": "none",
     "proxyConfiguration": {
