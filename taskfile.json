@@ -1,4 +1,4 @@
-
+[
 	"family": "quiztrial",
 	"networkMode": "bridge",
 	"requiresCompatibilities": [
@@ -16,3 +16,4 @@
 		},]
 	}]
 
+]
