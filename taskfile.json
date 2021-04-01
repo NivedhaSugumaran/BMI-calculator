@@ -7,6 +7,7 @@
          "image":"758181067640.dkr.ecr.ap-south-1.amazonaws.com/quizrepo:latest",
          "cpu":10,
          "memory":10,
+          "essential": true,
          "portMappings":[
             {
                "containerPort":8081,
