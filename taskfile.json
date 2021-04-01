@@ -165,10 +165,9 @@
                     "accessPointId": "",
                     "iam": "ENABLED"
                 }
-            }
-   
-        
-    ],
+            },
+        }
+   ],
     "placementConstraints": [
         {
             "type": "memberOf",
