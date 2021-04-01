@@ -71,7 +71,6 @@
   "networkMode": "bridge",
   "cpu": "128",
   "revision": 3,
-  "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
   "volumes": []
