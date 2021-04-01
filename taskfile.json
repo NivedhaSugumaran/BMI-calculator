@@ -157,15 +157,6 @@
     
     "pidMode": "task",
     "ipcMode": "none",
-    "proxyConfiguration": {
-        "type": "APPMESH",
-        "containerName": "",
-        
-    },
-    "inferenceAccelerators": [
-        {
-            "deviceName": "",
-            "deviceType": ""
-        }
+    
     ]
 }
