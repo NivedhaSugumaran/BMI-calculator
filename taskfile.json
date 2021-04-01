@@ -173,10 +173,5 @@
             }
         ]
     },
-    "inferenceAccelerators": [
-        {
-            "deviceName": "",
-            "deviceType": ""
-        }
-    ]
+    
 }
