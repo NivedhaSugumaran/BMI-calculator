@@ -165,7 +165,7 @@
                     "accessPointId": "",
                     "iam": "ENABLED"
                 }
-            },
+            }
       
     ],
     "placementConstraints": [
