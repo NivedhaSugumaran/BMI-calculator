@@ -1,22 +1,19 @@
 {
-    "family": "quiztrial",
-    "networkMode": "bridge",
-     "essential": true,
-    "containerDefinitions" : [
-    {
-            "name": "trialquiz",
-            "image": "758181067640.dkr.ecr.ap-south-1.amazonaws.com/quizrepo:latest",
-            "cpu": 10,
-            "memory": 10,
-            "portMappings": [
-                {
-                    "containerPort": 8081,
-                    "hostPort": 80
-                } ],
-     } 
-        ],
-           
-        
-    
-    
+   "family":"quiztrial",
+   "networkMode":"bridge",
+   "essential":true,
+   "containerDefinitions":[
+      {
+         "name":"trialquiz",
+         "image":"758181067640.dkr.ecr.ap-south-1.amazonaws.com/quizrepo:latest",
+         "cpu":10,
+         "memory":10,
+         "portMappings":[
+            {
+               "containerPort":8081,
+               "hostPort":80
+            }
+         ]
+      }
+   ]
 }
