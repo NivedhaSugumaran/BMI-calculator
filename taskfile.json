@@ -57,17 +57,6 @@
   ],
   
   "family": "sami:3",
-  "requiresAttributes": [
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    }
-  ],
-  "requiresCompatibilities": [
-    "EC2"
-  ],
   "networkMode": "bridge",
   "cpu": "128",
   "revision": 3,
