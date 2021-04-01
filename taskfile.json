@@ -1,6 +1,8 @@
 {
-    "containerDefinitions": [
-        {
+    "family": "quiztrial"
+    "networkMode": "bridge",
+    "containerDefinitions" : [
+        
             "name": "trialquiz",
             "image": "758181067640.dkr.ecr.ap-south-1.amazonaws.com/quizrepo:latest",
             "cpu": 10,
@@ -12,7 +14,7 @@
                 }
             ],
             "essential": true
-        }
-    ]
-    "family": "quiztrial"
+        
+    ],
+    
 }
