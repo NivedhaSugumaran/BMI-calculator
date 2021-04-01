@@ -1,7 +1,6 @@
 {
    "family":"quiztrial",
    "networkMode":"bridge",
-   "essential":true,
    "containerDefinitions":[
       {
          "name":"trialquiz",
