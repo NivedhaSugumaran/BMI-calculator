@@ -1,166 +1,18 @@
 {
-    "family": "trialquiz",
-    "taskRoleArn": "",
-    "executionRoleArn": "",
-    "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "name": "quiz123",
+            "name": "trialquiz",
             "image": "758181067640.dkr.ecr.ap-south-1.amazonaws.com/quizrepo:latest",
-            "repositoryCredentials": {"credentialsParameter": ""},
-            "cpu": 0,
-            "memory": 0,
-            "memoryReservation": 0,
-            "links": [""],
+            "cpu": 10,
+            "memory": 10,
             "portMappings": [
                 {
                     "containerPort": 8081,
-                    "hostPort": 80,
-                    "protocol": "tcp"
+                    "hostPort": 80
                 }
             ],
-            "essential": true,
-            "entryPoint": [""],
-            "command": [""],
-            "environment": [
-                {
-                    "name": "",
-                    "value": ""
-                }
-            ],
-            "environmentFiles": [
-                {
-                    "value": "",
-                    "type": "s3"
-                }
-            ],
-            "mountPoints": [
-                {
-                    "sourceVolume": "",
-                    "containerPath": "",
-                    "readOnly": true
-                }
-            ],
-            "volumesFrom": [
-                {
-                    "sourceContainer": "",
-                    "readOnly": true
-                }
-            ],
-            "linuxParameters": {
-                "capabilities": {
-                    "add": [""],
-                    "drop": [""]
-                },
-                "devices": [
-                    {
-                        "hostPath": "",
-                        "containerPath": "",
-                        "permissions": ["read"]
-                    }
-                ],
-                "initProcessEnabled": true,
-                "sharedMemorySize": 0,
-                "tmpfs": [
-                    {
-                        "containerPath": "",
-                        "size": 0,
-                        "mountOptions": [""]
-                    }
-                ],
-                "maxSwap": 0,
-                "swappiness": 0
-            },
-            "secrets": [
-                {
-                    "name": "",
-                    "valueFrom": ""
-                }
-            ],
-            "dependsOn": [
-                {
-                    "containerName": "",
-                    "condition": "HEALTHY"
-                }
-            ],
-            "startTimeout": 0,
-            "stopTimeout": 0,
-            "hostname": "",
-            "user": "",
-            "workingDirectory": "",
-            "disableNetworking": true,
-            "privileged": true,
-            "readonlyRootFilesystem": true,
-            "dnsServers": [""],
-            "dnsSearchDomains": [""],
-            "extraHosts": [
-                {
-                    "hostname": "",
-                    "ipAddress": ""
-                }
-            ],
-            "dockerSecurityOptions": [""],
-            "interactive": true,
-            "pseudoTerminal": true,
-            "dockerLabels": {"KeyName": ""},
-            "ulimits": [
-                {
-                    "name": "msgqueue",
-                    "softLimit": 0,
-                    "hardLimit": 0
-                }
-            ],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {"KeyName": ""},
-                "secretOptions": [
-                    {
-                        "name": "",
-                        "valueFrom": ""
-                    }
-                ]
-            },
-            "healthCheck": {
-                "command": [""],
-                "interval": 0,
-                "timeout": 0,
-                "retries": 0,
-                "startPeriod": 0
-            },
-            "systemControls": [
-                {
-                    "namespace": "",
-                    "value": ""
-                }
-            ],
-            "resourceRequirements": [
-                {
-                    "value": "",
-                    "type": "GPU"
-                }
-            ],
-            "firelensConfiguration": {
-                "type": "fluentd",
-                "options": {"KeyName": ""}
-            }
+            "essential": true
         }
     ],
-
-    "placementConstraints": [
-        {
-            "type": "memberOf",
-            "expression": ""
-        }
-    ],
-    "requiresCompatibilities": ["EC2"],
-    "cpu": "128",
-    "memory": "256",
-    "tags": [
-        {
-            "key": "name",
-            "value": "quiz"
-        }
-    ]
-    
- 
+    "family": "quiztrial"
 }
