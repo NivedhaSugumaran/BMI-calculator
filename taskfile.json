@@ -2,7 +2,7 @@
    "family":"quiztrial",
    "networkMode":"bridge",
    "requiresCompatibilities": [ 
-       "EC2" ]
+       "EC2" ],
    "containerDefinitions":[
       {
          "name":"trialquiz",
