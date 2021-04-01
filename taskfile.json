@@ -161,7 +161,6 @@
             "value": "quiz"
         }
     ],
-    "pidMode": "task",
-    "ipcMode": "none",
- ]
+    
+ 
 }
