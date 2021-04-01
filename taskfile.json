@@ -154,7 +154,7 @@
     ],
     "requiresCompatibilities": ["EC2"],
     "cpu": "128",
-    "memory": "",
+    "memory": "256",
     "tags": [
         {
             "key": "name",
