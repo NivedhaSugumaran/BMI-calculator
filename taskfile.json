@@ -187,8 +187,8 @@
     "memory": "",
     "tags": [
         {
-            "key": "",
-            "value": ""
+            "key": "name",
+            "value": "quiz"
         }
     ],
     "pidMode": "task",
