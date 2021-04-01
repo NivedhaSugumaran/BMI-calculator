@@ -163,15 +163,6 @@
     ],
     "pidMode": "task",
     "ipcMode": "none",
-    "proxyConfiguration": {
-        "type": "APPMESH",
-        "containerName": "",
-        "properties": [
-            {
-                "name": "",
-                "value": ""
-            }
-        ]
-    },
+    
     
 }
