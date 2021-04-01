@@ -48,7 +48,7 @@
     }
   ],
   "memory": "300",
-  "taskRoleArn": "None",
+  "taskRoleArn": "arn:aws:iam::758181067640:role/ecr",
   
   "family": "trialce",
   "networkMode": "bridge",
