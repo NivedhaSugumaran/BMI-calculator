@@ -183,12 +183,7 @@
     "proxyConfiguration": {
         "type": "APPMESH",
         "containerName": "",
-        "properties": [
-            {
-                "name": "",
-                "value": ""
-            }
-        ]
+        
     },
     "inferenceAccelerators": [
         {
